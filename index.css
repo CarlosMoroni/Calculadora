@@ -1,0 +1,78 @@
+body{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: gainsboro;
+}
+
+
+main {
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
+    background-color: #fff;
+}
+
+.tela > input{
+    display: block;
+    width: 370px;
+    height: 50px;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 30px;
+
+    font-size: 30px;
+    text-align: right;
+
+    background-color: #fff;
+    border: 1px solid #000;
+}
+
+.mensagen {
+    font-size: 24px;
+    color: red;
+    text-align: center;
+}
+
+button {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    border: none;
+    background-color: tomato;
+
+    color: #fff;
+    font-size: 36px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #8c8c8c;
+}
+
+
+.apagar {
+    width: 390px;
+    margin-bottom: 5px;
+    text-align: end;
+}
+
+.botoes {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.resultado {
+    width: 175px;
+    border-radius: 120px;
+    font-size: 50px;
+}
