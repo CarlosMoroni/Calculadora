@@ -169,5 +169,7 @@ resultado.addEventListener('click', () => {
         let valor1 = Number(primeiro_valor.valor)  
         let valor2 = Number(visor.value) 
         visor.value = calc.calc_divisao(valor1, valor2);
-    }   
+    }  
+    
+
 })
