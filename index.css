@@ -6,73 +6,98 @@ body{
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: gainsboro;
+    background-color: #000;
 }
 
 
 main {
-    border: 2px solid black;
-    border-radius: 15px;
     padding: 30px;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.5);
-    background-color: #fff;
+    background-color: #000;
 }
 
-.tela > input{
+.input{
     display: block;
-    width: 370px;
+    width: 340px;
     height: 50px;
     border: none;
-    border-radius: 15px;
+    border-radius: 30px;
     padding: 15px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 
     font-size: 30px;
     text-align: right;
 
-    background-color: #fff;
-    border: 1px solid #000;
-}
-
-.mensagen {
-    font-size: 24px;
-    color: red;
-    text-align: center;
+    background-color: #000;
+    color: #fff
 }
 
 button {
     width: 80px;
     height: 80px;
-    border-radius: 100%;
+    border-radius: 50%;
     border: none;
-    background-color: tomato;
-
     color: #fff;
     font-size: 36px;
     margin: 5px;
     cursor: pointer;
+    text-align: center;
 }
-
-button:hover {
-    background-color: #8c8c8c;
-}
-
 
 .apagar {
-    width: 390px;
-    margin-bottom: 5px;
-    text-align: end;
+    display: flex;
+}
+.apagar > button {
+    margin-left: 7px;
+}
+
+.apagar button {
+    background-color: #A5A5A5;
 }
 
 .botoes {
-    width: 400px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    position: relative;
 }
 
-.resultado {
-    width: 175px;
+.numeros {
+    width: 280px;
+}
+
+.zero {
+    width: 173px;
     border-radius: 120px;
-    font-size: 50px;
+    text-align: start;
+    padding-left: 30px;
+}
+
+.calculos {
+    width: 100px;
+    position: absolute;
+    right: -10px;
+    bottom: 0px;
+}
+
+.num {
+    background-color: #333333;
+}
+
+.num:hover {
+    background-color: #8c8c8c;
+}
+
+.calc {
+    background-color: #FF9F0C;
+}
+
+.calc:hover{
+    background-color: #8c8c8c;
+}
+
+.erro {
+    border: 0.5px solid red;
+}
+
+.calculo-selecionado {
+    background-color: #fff;
+    color: #FF9F0C;
 }
