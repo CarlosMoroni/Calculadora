@@ -2,6 +2,4 @@
 ## Projeto de aprendizado de eventos JavaScript
 ### CSS e HTML brasico.
 
-![Capturar](https://user-images.githubusercontent.com/92612454/202886744-54f35118-95a8-463c-b88c-c62d1262f64c.PNG)
-
-
+![calculadora](https://user-images.githubusercontent.com/92612454/204061908-61e64810-6940-4310-bbf3-4ad76d9456c9.gif)
