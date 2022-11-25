@@ -43,10 +43,33 @@ function fazBusca(busca) {
     }
 }
 
+function insertVisor(numero, valor){
+    numero.addEventListener('click', () => {
+        visor.value += valor
+        visor.classList.remove('erro')
+    })
+}
+
+function selecionaCalculo(sinal, calculo){
+    if (visor.value == 0) {
+        visor.classList.add('erro')
+    } else {
+        primeiro_valor = {
+            valor: visor.value,
+            operacao: sinal,
+            status: true
+        }
+
+        visor.value = ''
+        calculo.classList.add('calculo-selecionado')
+        return primeiro_valor
+    }
+}
+
 const calc = new Matematica()
 
 
-// inserts no visor da calculadora
+// pegando valores do html
 const visor = document.querySelector('input')
 
 const numero1 = document.getElementById('1')
@@ -65,110 +88,63 @@ const apagar = document.getElementById('c')
 const trocaSinal = document.getElementById('trocaSinal')
 const porcentagen = document.getElementById('porcentagen')
 
-
-numero1.addEventListener('click', () => {
-    visor.value += '1'
-    visor.classList.remove('erro')
-})
-
-numero2.addEventListener('click', () => {
-    visor.value += '2'
-    visor.classList.remove('erro')
-})
-
-numero3.addEventListener('click', () => {
-    visor.value += '3'
-    visor.classList.remove('erro')
-})
-
-numero4.addEventListener('click', () => {
-    visor.value += '4'
-    visor.classList.remove('erro')
-})
-
-numero5.addEventListener('click', () => {
-    visor.value += '5'
-    visor.classList.remove('erro')
-})
-
-numero6.addEventListener('click', () => {
-    visor.value += '6'
-    visor.classList.remove('erro')
-})
-
-numero7.addEventListener('click', () => {
-    visor.value += '7'
-    visor.classList.remove('erro')
-})
-
-numero8.addEventListener('click', () => {
-    visor.value += '8'
-    visor.classList.remove('erro')
-})
-
-numero9.addEventListener('click', () => {
-    visor.value += '9'
-    visor.classList.remove('erro')
-})
-
-numero0.addEventListener('click', () => {
-    visor.value += '0'
-    visor.classList.remove('erro')
-})
+// inserindo valores no visor da calculadora
+insertVisor(numero1, '1')
+insertVisor(numero2, '2')
+insertVisor(numero3, '3')
+insertVisor(numero4, '4')
+insertVisor(numero5, '5')
+insertVisor(numero6, '6')
+insertVisor(numero7, '7')
+insertVisor(numero8, '8')
+insertVisor(numero9, '9')
+insertVisor(numero0, '0')
 
 ponto.addEventListener('click', () => {
     fazBusca('.')
 })
 
+// topo da calculadora
 apagar.addEventListener('click', () => {
     visor.classList.remove('erro')
     visor.value = ''
-    primeiro_valor.valor = 0
 })
 
 trocaSinal.addEventListener('click', () => {
-    let array = visor.value.split('');
+    let arrayVisor = visor.value.split('');
 
     if (visor.value == '') {
         visor.classList.add('erro')
-        visor.value += ''
-    } else if (array[0] == '-') {
-        array[0] = ''
-        visor.value = array.join('')
+    } else if (arrayVisor[0] == '-') {
+        arrayVisor[0] = ''
+        visor.value = arrayVisor.join('')
     }
     else {
-        array.unshift('-')
-        visor.value = array.join('')
+        arrayVisor.unshift('-')
+        visor.value = arrayVisor.join('')
     }
 })
 
 porcentagen.addEventListener('click', () => {
     let array = visor.value.split('')
-    let result = 0
-
-    array.forEach((iten) => {
-        if (iten == '%') {
-            result = true
-        }
-    })
+    let porcento = 100
 
     if (visor.value == '') {
         visor.classList.add('erro')
-        visor.value += ''
-    } else if (primeiro_valor.status == 'off'){
-        visor.value = visor.value / 100
+    } else if (primeiro_valor.status == false){
+        visor.value = visor.value / porcento
     }else{
-        let calculoPercentual = ((visor.value / 100) * primeiro_valor.valor)
+        let calculoPercentual = ((visor.value / porcento) * primeiro_valor.valor)
         visor.value = calculoPercentual
     }
 })
 
 
 //  calculos
-
 var primeiro_valor = {
-    valor: visor.value,
-    operacao: ''
+    valor: 0,
+    operacao: '',
+    status: false
 }
 
 const soma = document.getElementById('soma')
@@ -176,78 +152,24 @@ const subtracao = document.getElementById('subtracao')
 const multiplicacao = document.getElementById('multiplicacao')
 const divisao = document.getElementById('divisao')
 
-soma.addEventListener('click', () => {
-    if (visor.value == 0) {
-        visor.classList.add('erro')
-    } else {
-        let valor = visor.value
-        primeiro_valor = {
-            valor: valor,
-            operacao: '+',
-            status: 'on'
-        }
 
-        visor.value = ''
-        soma.classList.add('calculo-selecionado')
-        return primeiro_valor
-    }
+soma.addEventListener('click', () => {
+    selecionaCalculo('+', soma)
 })
 
 subtracao.addEventListener('click', () => {
-    if (visor.value == 0) {
-        visor.classList.add('erro')
-    } else {
-        let valor = visor.value
-
-        primeiro_valor = {
-            valor: valor,
-            operacao: '-',
-            status: 'on'
-        }
-
-        visor.value = ''
-        subtracao.classList.add('calculo-selecionado')
-        return primeiro_valor
-    }
+    selecionaCalculo('-', subtracao)
 })
 
 multiplicacao.addEventListener('click', () => {
-    if (visor.value == 0) {
-        visor.classList.add('erro')
-    } else {
-        let valor = visor.value
-
-        primeiro_valor = {
-            valor: valor,
-            operacao: '*',
-            status: 'on'
-        }
-
-        visor.value = ''
-        multiplicacao.classList.add('calculo-selecionado')
-        return primeiro_valor
-    }
+    selecionaCalculo('*', multiplicacao)
 })
 
 divisao.addEventListener('click', () => {
-    if (visor.value == 0) {
-        visor.classList.add('erro')
-    } else {
-        let valor = visor.value
-
-        primeiro_valor = {
-            valor: valor,
-            operacao: '/',
-            status: 'on'
-        }
-
-        visor.value = ''
-        divisao.classList.add('calculo-selecionado')
-        return primeiro_valor
-    }
+    selecionaCalculo('/', divisao)
 })
 
-
+// resultado!
 const resultado = document.getElementById('=')
 
 resultado.addEventListener('click', () => {
@@ -257,7 +179,7 @@ resultado.addEventListener('click', () => {
         visor.value = calc.calc_soma(valor1, valor2);
 
         soma.classList.remove('calculo-selecionado')
-        primeiro_valor.status = 'off'
+        primeiro_valor.status = false
 
     } else if (primeiro_valor.operacao == '-') {
         let valor1 = Number(primeiro_valor.valor)
@@ -265,7 +187,7 @@ resultado.addEventListener('click', () => {
         visor.value = calc.calc_subitracao(valor1, valor2);
 
         subtracao.classList.remove('calculo-selecionado')
-        primeiro_valor.status = 'off'
+        primeiro_valor.status = false
 
     } else if (primeiro_valor.operacao == '*') {
         let valor1 = Number(primeiro_valor.valor)
@@ -273,7 +195,7 @@ resultado.addEventListener('click', () => {
         visor.value = calc.calc_multiplicacao(valor1, valor2);
 
         multiplicacao.classList.remove('calculo-selecionado')
-        primeiro_valor.status = 'off'
+        primeiro_valor.status = false
 
     } else if (primeiro_valor.operacao == '/') {
         let valor1 = Number(primeiro_valor.valor)
@@ -287,12 +209,14 @@ resultado.addEventListener('click', () => {
         }
 
         divisao.classList.remove('calculo-selecionado')
-        primeiro_valor.status = 'off'
+        primeiro_valor.status = false
+    }else {
+        visor.classList.add('erro')
     }
 
     primeiro_valor = {
         valor: 0,
         operacao: '',
-        status: 'off'
+        status: false
     }
 })
